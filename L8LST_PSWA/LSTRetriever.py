@@ -252,7 +252,7 @@ class LSTRetriever():
     LSE_modes = ['auto-ndvi-raw', 'auto-ndvi-srem', 'from-glc', 'external']
 
     def __init__(self, metadata_file, LSE_mode='auto-ndvi-srem', LSE_file=None, angles_file=None, usgs_utils=None,
-                 temp_dir=None, window_size=15, cygwin_bash_exe_path=''):
+                 temp_dir=None, window_size=15, cygwin_bash_exe_path=None):
         if LSE_mode not in self.LSE_modes:
             raise ValueError('Unsupported LSE mode. Supported: %s' % self.LSE_modes)
 
