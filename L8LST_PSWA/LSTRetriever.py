@@ -252,7 +252,7 @@ class LSTRetriever():
     LSE_modes = ['auto-ndvi-raw', 'auto-ndvi-srem', 'from-glc', 'external']
 
     def __init__(self, metadata_file, LSE_mode='auto-ndvi-srem', LSE_file=None, angles_file=None, usgs_utils=None,
-                 temp_dir=None, window_size=15):
+                 temp_dir=None, window_size=15, cygwin_bash_exe_path=''):
         if LSE_mode not in self.LSE_modes:
             raise ValueError('Unsupported LSE mode. Supported: %s' % self.LSE_modes)
 
@@ -269,6 +269,7 @@ class LSTRetriever():
         self.usgs_utils = usgs_utils
         self.temp_dir = temp_dir
         self.lse_mode = LSE_mode
+        self.cygwin_bash_exe_path = cygwin_bash_exe_path
         if self.lse_mode in ['from-glc', 'external']:
             self.lse_file = LSE_file
 
@@ -324,7 +325,8 @@ class LSTRetriever():
                        'metadata': self.metadata_file,
                        'angles_file': self.angles_file,
                        'usgs_util_path': self.usgs_utils,
-                       'temp_dir': self.temp_dir}
+                       'temp_dir': self.temp_dir,
+                       'cygwin_bash_exe_path': self.cygwin_bash_exe_path}
 
             srem.set_data(data_b4)
             band4_reflectance = srem.get_srem_surface_reflectance_as_array()
@@ -333,7 +335,8 @@ class LSTRetriever():
                        'metadata': self.metadata_file,
                        'angles_file': self.angles_file,
                        'usgs_util_path': self.usgs_utils,
-                       'temp_dir': self.temp_dir}
+                       'temp_dir': self.temp_dir,
+                       'cygwin_bash_exe_path': self.cygwin_bash_exe_path}
 
             srem.set_data(data_b5)
             band5_reflectance = srem.get_srem_surface_reflectance_as_array()
