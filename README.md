@@ -17,6 +17,15 @@ gdal, numpy, python-fmask (must be available in command-line interface)
 
 Optional requirement: SREMPy-landsat (https://github.com/eduard-kazakov/SREMPy-landsat). If installed, additional option of LSE calculation is available.
 
+## Recommended environment preparation
+
+I recommend to use conda (miniconda build) (https://docs.conda.io/en/latest/miniconda.html):
+
+conda create --name lst python=3.8.2
+conda install -c conda-forge -n lst python-fmask
+conda activate lst
+pip install git+https://github.com/eduard-kazakov/SREMPy-landsat
+
 ## Installation
 
 pip install git+https://github.com/eduard-kazakov/Landsat8_LST_PSWA
@@ -63,7 +72,7 @@ After initialization you can directly retrieve products with following methods:
 ```python         
 from L8LST_PSWA.LSTRetriever import LSTRetriever
 
-lst_retriever = L8_LST_PSWA(metadata_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_MTL.txt',
+lst_retriever = LSTRetriever(metadata_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_MTL.txt',
                             LSE_mode='auto-ndvi-raw',
                             temp_dir='/.../temp_dir',
                             window_size=15)
@@ -76,7 +85,7 @@ lst_retriever.get_lst_as_gtiff('/.../LST_20180512.tif')
 ```python         
 from L8LST_PSWA.LSTRetriever import LSTRetriever
 
-lst_retriever = L8_LST_PSWA(metadata_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_MTL.txt',
+lst_retriever = LSTRetriever(metadata_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_MTL.txt',
                             LSE_mode='from-glc',
                             LSE_file='/.../Data/glc_nw.tif',                            temp_dir='/.../temp_dir',
                             window_size=15)
@@ -90,7 +99,7 @@ lst_retriever.get_lst_as_gtiff('/.../LST_20180512.tif')
 ```python         
 from L8LST_PSWA.LSTRetriever import LSTRetriever
 
-lst_retriever = L8_LST_PSWA(metadata_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_MTL.txt',
+lst_retriever = LSTRetriever(metadata_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_MTL.txt',
                             LSE_mode='auto-ndvi-srem',
                             angles_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_ANG.txt',
                             usgs_utils='/.../L8_ANGLES_2_7_0/l8_angles/l8_angles',
