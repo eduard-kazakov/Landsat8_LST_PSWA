@@ -30,7 +30,9 @@ pip install git+https://github.com/eduard-kazakov/SREMPy-landsat
 
 ## Installation
 
+```bash
 pip install git+https://github.com/eduard-kazakov/Landsat8_LST_PSWA
+```
 
 ## For what this algorithm is developed?
 
