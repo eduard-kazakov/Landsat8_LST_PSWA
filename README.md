@@ -58,6 +58,7 @@ All options are set with class object (LSTRetriever) initialization. Initializat
 * **window_size** - split window size. Default value is 15 (11x11 pixels). You can experiment with huge values for better runtime performance. Small window size leads to long processing time.
 * **angles_file** - is used only if LSE is **auto-ndvi-srem**. This is path to *ANG.txt file from standart Landsat 8 L1C dataset
 * **usgs_utils** - is used only if LSE is **auto-ndvi-srem**. This is path to compiled executable of l8_angles util by USGS (https://www.usgs.gov/land-resources/nli/landsat/solar-illumination-and-sensor-viewing-angle-coefficient-files). Further information about SREMPy-landsat is available here: https://github.com/eduard-kazakov/SREMPy-landsat.
+* **cygwin_bash_exe_path** - only for windows users who wants to use SREM for LSE.
 
 Simplest option is to use **auto-ndvi-raw**, but it also worst in quality.
 
@@ -113,6 +114,21 @@ lst_retriever = LSTRetriever(metadata_file='/.../Data/LC08_L1TP_185018_20180512_
 lst_retriever.get_lst_as_gtiff('/.../LST_20180512.tif')
 ``` 
 
+4. With **auto-ndvi-srem** mode (windows users):
+
+```python         
+from L8LST_PSWA.LSTRetriever import LSTRetriever
+
+lst_retriever = LSTRetriever(metadata_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_MTL.txt',
+                            LSE_mode='auto-ndvi-srem',
+                            angles_file='/.../Data/LC08_L1TP_185018_20180512_20180517_01_T1/LC08_L1TP_185018_20180512_20180517_01_T1_ANG.txt',
+                            usgs_utils='/.../L8_ANGLES_2_7_0/l8_angles/l8_angles.exe',
+                            temp_dir='/.../temp_dir',
+                            window_size=15,
+                            cygwin_bash_exe_path='C:/cygwin64/bin/bash.exe')
+
+lst_retriever.get_lst_as_gtiff('/.../LST_20180512.tif')
+``` 
 
 ## Contacts
 
