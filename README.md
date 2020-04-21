@@ -71,8 +71,8 @@ After initialization you can directly retrieve products with following methods:
 
 You can also modify class properties, affecting cloud masking (after initialization, before running lst calculation):
 * cloudbufferdistance (default 30)
-* cloudprobthreshold = (default 75.0)
-* shadowbufferdistance = (default 0)
+* cloudprobthreshold (default 75.0)
+* shadowbufferdistance (default 0)
 
 ## Examples
 
