@@ -69,6 +69,10 @@ After initialization you can directly retrieve products with following methods:
 * **get_b10_b11_brightness_temp_arrays** - get two arrays with brightness temperatures for B10 and B11 (in same extent as original L8 scene)
 * **__save_array_to_gtiff (output_path)** - you can use this method to save any array (generated with described methods) to GeoTiff.
 
+You can also modify class properties, affecting cloud masking (after initialization, before running lst calculation):
+* cloudbufferdistance (default 30)
+* cloudprobthreshold = (default 75.0)
+* shadowbufferdistance = (default 0)
 
 ## Examples
 
@@ -82,6 +86,7 @@ lst_retriever = LSTRetriever(metadata_file='/.../Data/LC08_L1TP_185018_20180512_
                             temp_dir='/.../temp_dir',
                             window_size=15)
 
+lst_retriever.cloudprobthreshold = 60
 lst_retriever.get_lst_as_gtiff('/.../LST_20180512.tif')
 ```
 
