@@ -30,7 +30,7 @@ class LSTRetriever():
     NDVIs = 0.2
     NDVIv = 0.5
 
-    LSE_modes = ['auto-ndvi-raw', 'auto-ndvi-srem', 'from-glc', 'external']
+    LSE_modes = ['auto-ndvi-raw', 'auto-ndvi-dos', 'auto-ndvi-srem', 'from-glc', 'external']
 
     def __init__(self, metadata_file, LSE_mode='auto-ndvi-srem', LSE_file=None, angles_file=None, usgs_utils=None,
                  temp_dir=None, window_size=7, cygwin_bash_exe_path=None):
@@ -87,7 +87,7 @@ class LSTRetriever():
 
         return b0, b1, b2, b3, b4, b5, b6, b7
 
-    def get_lse_from_ndvi(self, srem=False):
+    def get_lse_from_ndvi(self, srem=False, dos=False):
         self.band_4_path = os.path.join(self.dataset_basepath, self.metadata.metadata['FILE_NAME_BAND_4'])
         self.band_5_path = os.path.join(self.dataset_basepath, self.metadata.metadata['FILE_NAME_BAND_5'])
 
@@ -95,8 +95,12 @@ class LSTRetriever():
             band4_calibrator = LandsatBandCalibrator(self.band_4_path, self.metadata_file)
             band5_calibrator = LandsatBandCalibrator(self.band_5_path, self.metadata_file)
 
-            band4_reflectance = band4_calibrator.get_reflectance_as_array()
-            band5_reflectance = band5_calibrator.get_reflectance_as_array()
+            if dos == False:
+                band4_reflectance = band4_calibrator.get_reflectance_as_array()
+                band5_reflectance = band5_calibrator.get_reflectance_as_array()
+            else:
+                band4_reflectance = band4_calibrator.get_dos_corrected_reflectance_as_array()
+                band5_reflectance = band5_calibrator.get_dos_corrected_reflectance_as_array()
 
         else:
             from SREMPyLandsat.SREMPyLandsat import SREMPyLandsat
@@ -324,9 +328,11 @@ class LSTRetriever():
 
         # LSE
         if self.lse_mode == 'auto-ndvi-raw':
-            lse_b10, lse_b11 = self.get_lse_from_ndvi(srem=False)
+            lse_b10, lse_b11 = self.get_lse_from_ndvi(srem=False, dos=False)
+        if self.lse_mode == 'auto-ndvi-dos':
+            lse_b10, lse_b11 = self.get_lse_from_ndvi(srem=False, dos=True)
         if self.lse_mode == 'auto-ndvi-srem':
-            lse_b10, lse_b11 = self.get_lse_from_ndvi(srem=True)
+            lse_b10, lse_b11 = self.get_lse_from_ndvi(srem=True, dos=False)
         if self.lse_mode == 'external':
             lse_b10, lse_b11 = self.lse_from_file(self.lse_file)
         if self.lse_mode == 'from-glc':

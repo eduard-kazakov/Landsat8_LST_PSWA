@@ -53,6 +53,7 @@ All options are set with class object (LSTRetriever) initialization. Initializat
 * **metadata_file** - full path to Landsat 8 (L1C) dataset metadata file (*MTL.txt)
 * **LSE_mode** - is option how to calculate Land Surface Emissivity (LSE), very important parameter for LST. Supported variants: 
     * auto-ndvi-raw : LSE is calculated from NDVI reflectace values (without atmosperic correction)
+    * auto-ndvi-dos : LSE is calculated from NDVI reflectace values (with DOS atmosperic correction)
     * auto-ndvi-srem : LSE is calculated from NDVI reflectace values (with SREM atmosperic correction). SREMPy-landsat module must be installed for this option.
     * from-glc : LSE is obtained from land cover maps (GLC) with look-up table. FROM-GLC project is used as land cover source (http://data.ess.tsinghua.edu.cn/)
     * external : LSE is obtained from external file (if you can calculate LSE elsewhere)
