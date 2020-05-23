@@ -5,7 +5,8 @@ with open("README.md", "r") as fh:
 
 requires = [
     'gdal',
-    'numpy'
+    'numpy',
+    'LandsatBasicUtils'
 ]
 
 setuptools.setup(
@@ -18,7 +19,6 @@ setuptools.setup(
     keywords='landsat, lst, pswa',
     long_description_content_type="text/markdown",
     url="https://github.com/eduard-kazakov/Landsat8_LST_PSWA",
-    install_requires=requires,
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

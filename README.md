@@ -17,7 +17,7 @@ gdal, numpy
 
 python-fmask (must be available in command-line interface) | https://github.com/ubarsc/python-fmask
 
-LandastBasicUtils | https://github.com/eduard-kazakov/LandastBasicUtils 
+LandsatBasicUtils | https://github.com/eduard-kazakov/LandsatBasicUtils 
 
 Optional requirement: SREMPy-landsat  | https://github.com/eduard-kazakov/SREMPy-landsat. If installed, additional option of LSE calculation is available.
 
