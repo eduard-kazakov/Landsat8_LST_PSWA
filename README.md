@@ -13,9 +13,13 @@ Theoretical basis for implemented methods are available in following papers:
 
 ## Requirements
 
-gdal, numpy, python-fmask (must be available in command-line interface)
+gdal, numpy
 
-Optional requirement: SREMPy-landsat (https://github.com/eduard-kazakov/SREMPy-landsat). If installed, additional option of LSE calculation is available.
+python-fmask (must be available in command-line interface) | https://github.com/ubarsc/python-fmask
+
+LandastBasicUtils | https://github.com/eduard-kazakov/LandastBasicUtils 
+
+Optional requirement: SREMPy-landsat  | https://github.com/eduard-kazakov/SREMPy-landsat. If installed, additional option of LSE calculation is available.
 
 ## Recommended environment preparation
 
@@ -25,6 +29,7 @@ I recommend to use conda (miniconda build) (https://docs.conda.io/en/latest/mini
 conda create --name lst python=3.8.2
 conda install -c conda-forge -n lst python-fmask
 conda activate lst
+pip install git+https://github.com/eduard-kazakov/LandastBasicUtils
 pip install git+https://github.com/eduard-kazakov/SREMPy-landsat
 ```
 
