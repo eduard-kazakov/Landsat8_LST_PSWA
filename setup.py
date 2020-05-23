@@ -17,7 +17,7 @@ setuptools.setup(
     long_description=long_description,
     keywords='landsat, lst, pswa',
     long_description_content_type="text/markdown",
-    url="https://github.com/silenteddie/Landsat8_LST_PSWA",
+    url="https://github.com/eduard-kazakov/Landsat8_LST_PSWA",
     install_requires=requires,
     packages=setuptools.find_packages(),
     classifiers=[
