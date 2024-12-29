@@ -1,4 +1,4 @@
-# Landsat8_LST_PSWA
+hi# Landsat8_LST_PSWA
 Open and fully automated python realization of Practical Split-Window Algorithm (PSWA) for Land Surface Temperature (LST) retrieval from Landsat-8/TIRS data. Covariance-variance ratio (SWCVR) method is used for water vapour content calculations. FMASK is used for cloud/water masks obtaining.
 
 **Important note**: python-fmask (http://www.pythonfmask.org/en/latest/) module must be installed and available with command-line interface
@@ -41,11 +41,16 @@ pip install git+https://github.com/eduard-kazakov/Landsat8_LST_PSWA
 
 ## For what this algorithm is developed?
 
-Land surface temperature is very important geophysical parameter. Many Earth Observation Satellites are equiped with thermal sensors, which are able to measure surface temperature. But there are a big problem: with remote sensing we can directly measure only **brightness temperature** (or radiative temperature). This parameter is not equal to **physical surface temperature**, and not taking into account surface material, atmospherical conditions and so on (and this is VERY important when you compare temperatures or calculate some temperature-based products). There are many approaches to retrieve real surface LST from measured on satellite brightness temperature, but most of them require a lot of additional information about atmosphere. Nice review of such methods could be found here:
+Land surface temperature (LST) is a critical geophysical parameter. Many Earth observation satellites are equipped with thermal sensors capable of measuring surface temperature. However, a significant challenge exists: remote sensing directly measures only brightness temperature (or radiative temperature), which is not equivalent to the actual physical surface temperature. Brightness temperature does not account for surface material properties, atmospheric conditions, and other influencing factors. These considerations are essential when comparing temperatures or deriving temperature-based products.
+
+Various methods exist for retrieving true surface LST from satellite-measured brightness temperature, but most require extensive additional atmospheric data. Comprehensive reviews of such methods can be found in the following references:
+
 * Jiménez-Muñoz J. C. et al. Land surface temperature retrieval methods from Landsat-8 thermal infrared sensor data //IEEE Geoscience and remote sensing letters. – 2014. – Т. 11. – №. 10. – С. 1840-1843.
 * Yu X., Guo X., Wu Z. Land surface temperature retrieval from Landsat 8 TIRS—Comparison between radiative transfer equation-based method, split window algorithm and single channel method //Remote sensing. – 2014. – Т. 6. – №. 10. – С. 9829-9852.
 
-For operational purposes we usually want to have fully automated algorithms, which are not have external data dependencies. Practical Split-Window algorithm (Du, Qiu, Meng, Zhao, 2015) was developed for such cases and have satisfactory quality. Water vapour content (required for Split-Window algorithms) is obtained with automated SWCVR method, based on values ratio in 10 and 11 bands. This python implementation allows to calculate physicall LST without any external data and in fully automated mode. Python-fmask algorithm is used for masking clouds and water.      
+For operational purposes, fully automated algorithms without external data dependencies are often preferred. The Practical Split-Window algorithm (Du, Qiu, Meng, Zhao, 2015) was designed for such scenarios and provides satisfactory accuracy. This method uses the automated SWCVR approach to derive water vapor content (required for Split-Window algorithms) based on the ratio of values in bands 10 and 11.
+
+This Python implementation enables the calculation of physical LST in a fully automated mode without requiring external data. Additionally, the Python-Fmask algorithm is employed for cloud and water masking.
 
 ## How to use
 
