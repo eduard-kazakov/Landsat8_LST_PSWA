@@ -1,4 +1,4 @@
-hi# Landsat8_LST_PSWA
+# Landsat8_LST_PSWA
 Open and fully automated python realization of Practical Split-Window Algorithm (PSWA) for Land Surface Temperature (LST) retrieval from Landsat-8/TIRS data. Covariance-variance ratio (SWCVR) method is used for water vapour content calculations. FMASK is used for cloud/water masks obtaining.
 
 **Important note**: python-fmask (http://www.pythonfmask.org/en/latest/) module must be installed and available with command-line interface
